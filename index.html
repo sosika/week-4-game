@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CrystalCollector Game</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>CrystalsCollector!</h1>
+	<div id="instructions">
+		<p>You will be given a random number at the start of the game.</p>
+		<p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+		<p>You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.</p>
+		<p>The value of each crystal is hidden from you until you click on it.</p>
+		<p>Each time when the game starts, the game will change the values of each crystal</p>
+	</div>
+	
+	<div id="targetScore"></div>
+	<div id="results">
+		<h3 id="announcement"></h3>
+		<h3 id="win-report"></h3>
+		<h3 id="lose-report"></h3>
+	</div>
+	<div id="crystals"></div>
+	<div id="text-score">
+		Your total score is: 
+	</div>
+	<div id="score"></div>
+
+
+<script type="text/javascript">
+
+	// Set up a counter for wins.
+	var wins = 0;
+	$("#win-report").text("Wins " + wins);
+
+	// Set up a counter for losses.
+	var losses = 0;
+	$("#lose-report").text("Losses " + losses);
+
+	// Init score.
+	var score = 0;
+	$("#score").text("0");
+
+	var targetNumber = 0;
+
+	var crystalPoints = [];
+
+	// Function clear 
+	function clear() {
+		getRandomNumber();
+		$("#crystals").empty();
+		getCrystalPoints();
+		score = 0;
+		$("#score").text("0");
+      }
+
+
+	function getRandomNumber() {
+	// Generate target random number.
+	targetNumber = Math.floor(Math.random() * 102 + 19);
+	console.log(targetNumber);
+	// Display target random number in targetScore.
+	$("#targetScore").text(targetNumber);
+	}
+	
+	function getCrystalPoints() {
+	// Generate random points per crystal.
+		for (var i = 0; i < 4; i++) {
+			//var crystalPoints = [];
+			var randomCrystalPoints = Math.floor(Math.random() * 12 + 1); 
+			console.log("random crystal points: "+randomCrystalPoints);
+			crystalPoints[i] = randomCrystalPoints;
+			console.log(crystalPoints[i]);
+
+			var imageCrystal = $("<img>");
+			imageCrystal.attr("src", "assets/images/crystal" + i + ".png");	
+			imageCrystal.addClass("crystal-image");
+			imageCrystal.attr("crystalValue",crystalPoints[i]);
+			$("#crystals").append(imageCrystal);
+		}
+	}
+
+	getRandomNumber();
+	getCrystalPoints();
+
+	$(document).on("click", ".crystal-image", function() {
+		var currentValue = ($(this).attr("crystalValue"));
+    	currentValue = parseInt(currentValue);
+    	targetNumber = parseInt(targetNumber);
+		score += currentValue;
+		$("#score").text(score);
+		console.log("score: " + score);
+		console.log("targetNumber: " + targetNumber);
+
+		if (score === targetNumber) {
+			wins ++;
+			$("#win-report").text("Wins " + wins);
+			$("#announcement").text("You win!!");
+			clear();
+		} 
+		if (score > targetNumber) {
+			losses ++;
+			$("#lose-report").text("Losses " + losses);
+			$("#announcement").text("You lose!!");
+			clear();
+		}
+	});
+
+
+
+
+</script>
+</body>
+
+</html>

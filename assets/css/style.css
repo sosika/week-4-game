@@ -1,0 +1,69 @@
+* {
+	box-sizing: border-box;
+}
+
+.crystal-image {
+      width: 100px;
+      height: 100px;
+    }
+
+h1 {
+	color: orange;
+	background-color: grey;
+	width: 250px;
+	padding: 20px;
+	font-size: 22px;
+}
+
+#instructions {
+	width: 600px;
+	background-color: green;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+#targetScore {
+	position: absolute;
+	background-color: lightblue;
+	width: 150px;
+	height: 120px;
+	text-align: center;
+	padding-top: 45px;
+	padding-bottom: 30px;
+	font-weight: bold;
+}
+
+#results {
+	position: absolute;
+	background-color: pink;
+	width: 150px;
+	height: 120px;
+	text-align: center;
+	margin-left: 200px;
+	padding-top: 25px;
+	padding-bottom: 30px;
+	font-weight: bold;
+}
+
+#crystals {
+	clear: both;
+	margin-top: 150px;
+}
+
+#text-score {
+	background-color: lightblue;
+	width: 150px;
+	height: 30px;
+	text-align: center;
+}
+
+#score {
+	background-color: lightblue;
+	width: 150px;
+	height: 80px;
+	margin-top: 20px;
+	text-align: center;
+	padding-top: 30px;
+	font-weight: bold;
+}
