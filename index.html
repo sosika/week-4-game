@@ -60,7 +60,6 @@
 	function getRandomNumber() {
 	// Generate target random number.
 	targetNumber = Math.floor(Math.random() * 102 + 19);
-	console.log(targetNumber);
 	// Display target random number in targetScore.
 	$("#targetScore").text(targetNumber);
 	}
@@ -70,9 +69,7 @@
 		for (var i = 0; i < 4; i++) {
 			//var crystalPoints = [];
 			var randomCrystalPoints = Math.floor(Math.random() * 12 + 1); 
-			console.log("random crystal points: "+randomCrystalPoints);
 			crystalPoints[i] = randomCrystalPoints;
-			console.log(crystalPoints[i]);
 
 			var imageCrystal = $("<img>");
 			imageCrystal.attr("src", "assets/images/crystal" + i + ".png");	
@@ -91,8 +88,6 @@
     	targetNumber = parseInt(targetNumber);
 		score += currentValue;
 		$("#score").text(score);
-		console.log("score: " + score);
-		console.log("targetNumber: " + targetNumber);
 
 		if (score === targetNumber) {
 			wins ++;
